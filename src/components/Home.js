@@ -15,10 +15,9 @@ const Home = () => {
                 <img src={blue} alt='C_E02'/>
             </div>
             <h2 className='game-description'>This is an origami-inspired version of the set game, designed by Marsha Falco in 1974. <br/>
-                Find all seven sets as fast as you can!</h2>
+                You will get to the next clue if you find all seven sets in one minute!</h2>
             <div className='home-buttons'>
                 <Link to={'/play'}>Start the game</Link>
-                <Link to={'/instructions'}>How to play</Link>
             </div>
         </div>
     </div>;

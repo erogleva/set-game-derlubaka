@@ -39,12 +39,15 @@ export default class CardsGrid extends Component<Props, State> {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        if(parseInt((Math.round(this.state.elapsed / 100) / 10).toFixed(0), 10) === 60){
+            return this.refresh()
+        }
+
         if (equals(prevState.selected, this.state.selected)) {
             return;
         }
 
         if (this.state.setsFound.length === 7) {
-
             clearInterval(this.timer);
             return
         }
@@ -123,14 +126,14 @@ export default class CardsGrid extends Component<Props, State> {
 
         this.setState({cards: createSets(cards)});
         clearInterval(this.timer);
-        this.timer = setInterval(this.tick, 50);
+        this.timer = setInterval(this.tick, 1000);
     };
 
     render() {
         const elapsed = Math.round(this.state.elapsed / 100);
         const time = (elapsed / 10).toFixed(0);
 
-        const {minutes, seconds} = this.calculateTime(time);
+        const {minutes, seconds} = this.calculateTime(parseInt(time, 10));
 
         return (
             <div className='cards-grid-page play'>
